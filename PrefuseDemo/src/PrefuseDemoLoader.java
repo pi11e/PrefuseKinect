@@ -35,6 +35,8 @@ public class PrefuseDemoLoader
         //JPanel rgvw =  RadialGraphView.demo(GraphFactory.makeGraph(), "name");
         //JPanel rgvw = RadialGraphView.demo("C:/Users/Philipp/Downloads/prefuse-beta-20071021/prefuse-beta/data/socialnet.xml", "name");
         
+        
+        
         JPanel radialGraphView = VisualizationComponent.createPanel(); 
         
         myFrame.add(radialGraphView);
@@ -50,6 +52,7 @@ public class PrefuseDemoLoader
         // show frame
         myFrame.setVisible(true);
         
+        //VisualizationComponent.getInstance().updateSize();
         
         // add ESC key listener
         KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);

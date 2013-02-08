@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.util.Iterator;
 
@@ -47,6 +48,7 @@ import prefuse.data.search.PrefixSearchTupleSet;
 import prefuse.data.search.SearchTupleSet;
 import prefuse.data.tuple.DefaultTupleSet;
 import prefuse.data.tuple.TupleSet;
+import prefuse.demos.TreeMap.NodeRenderer;
 import prefuse.render.AbstractShapeRenderer;
 import prefuse.render.DefaultRendererFactory;
 import prefuse.render.EdgeRenderer;
@@ -76,6 +78,7 @@ public class VisualizationComponent extends Display {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private static VisualizationComponent instance; 
 	public static final String DATA_FILE = "/data.xml";
     
     private static final String tree = "tree";
@@ -83,8 +86,8 @@ public class VisualizationComponent extends Display {
     private static final String treeEdges = "tree.edges";
     private static final String linear = "linear";
     
-//    private LabelRenderer m_nodeRenderer;
     private LabelRenderer m_nodeRenderer;
+    private NodeRenderer m_customNodeRenderer;
     private EdgeRenderer m_edgeRenderer;
     
     private String m_label = "label";
@@ -107,9 +110,9 @@ public class VisualizationComponent extends Display {
         m_nodeRenderer.setRenderType(AbstractShapeRenderer.RENDER_TYPE_FILL);
         m_nodeRenderer.setHorizontalAlignment(Constants.CENTER);
         m_nodeRenderer.setRoundedCorner(8,8);
-        m_edgeRenderer = new EdgeRenderer();
-        
+
         DefaultRendererFactory rf = new DefaultRendererFactory(m_nodeRenderer);
+        
         rf.add(new InGroupPredicate(treeEdges), m_edgeRenderer);
         m_vis.setRendererFactory(rf);
         /* END OF ORIGINAL CODE */
@@ -119,6 +122,7 @@ public class VisualizationComponent extends Display {
          * - nodes as circles (SLUB-red filled)
          * - labels to the side of the circle (if possible, *outside*; i.e. facing away from center of radial graph) 
          */
+        
         
         // label here is "name", referring to the "name" property given in the xml data file
         /*
@@ -259,46 +263,58 @@ public class VisualizationComponent extends Display {
     	
     }
     
+    public void updateSize()
+    {
+    	
+    	m_vis.run("treeLayout");
+    }
+    
+    public static VisualizationComponent getInstance()
+    {
+    	return instance;
+    }
+    
     private static JPanel demo(Graph g, final String label) {        
         // create a new radial tree view
         final VisualizationComponent gview = new VisualizationComponent(g, label);
+        VisualizationComponent.instance = gview;
         Visualization vis = gview.getVisualization();
-        
-        // create a search panel for the tree map
-        SearchQueryBinding sq = new SearchQueryBinding(
-             (Table)vis.getGroup(treeNodes), label,
-             (SearchTupleSet)vis.getGroup(Visualization.SEARCH_ITEMS));
-        JSearchPanel search = sq.createSearchPanel();
-        search.setShowResultCount(true);
-        search.setBorder(BorderFactory.createEmptyBorder(5,5,4,0));
-        search.setFont(FontLib.getFont("Tahoma", Font.PLAIN, 11));
-        
-        final JFastLabel title = new JFastLabel("                 ");
-        title.setPreferredSize(new Dimension(350, 20));
-        title.setVerticalAlignment(SwingConstants.BOTTOM);
-        title.setBorder(BorderFactory.createEmptyBorder(3,0,0,0));
-        title.setFont(FontLib.getFont("Tahoma", Font.PLAIN, 16));
-        
-        gview.addControlListener(new ControlAdapter() {
-            public void itemEntered(VisualItem item, MouseEvent e) {
-                if ( item.canGetString(label) )
-                    title.setText(item.getString(label));
-            }
-            public void itemExited(VisualItem item, MouseEvent e) {
-                title.setText(null);
-            }
-        });
-        
-        Box box = new Box(BoxLayout.X_AXIS);
-        box.add(Box.createHorizontalStrut(10));
-        box.add(title);
-        box.add(Box.createHorizontalGlue());
-        box.add(search);
-        box.add(Box.createHorizontalStrut(3));
+//        
+//        // create a search panel for the tree map
+//        SearchQueryBinding sq = new SearchQueryBinding(
+//             (Table)vis.getGroup(treeNodes), label,
+//             (SearchTupleSet)vis.getGroup(Visualization.SEARCH_ITEMS));
+//        JSearchPanel search = sq.createSearchPanel();
+//        search.setShowResultCount(true);
+//        search.setBorder(BorderFactory.createEmptyBorder(5,5,4,0));
+//        search.setFont(FontLib.getFont("Tahoma", Font.PLAIN, 11));
+//        
+//        final JFastLabel title = new JFastLabel("                 ");
+//        title.setPreferredSize(new Dimension(350, 20));
+//        title.setVerticalAlignment(SwingConstants.BOTTOM);
+//        title.setBorder(BorderFactory.createEmptyBorder(3,0,0,0));
+//        title.setFont(FontLib.getFont("Tahoma", Font.PLAIN, 16));
+//        
+//        gview.addControlListener(new ControlAdapter() {
+//            public void itemEntered(VisualItem item, MouseEvent e) {
+//                if ( item.canGetString(label) )
+//                    title.setText(item.getString(label));
+//            }
+//            public void itemExited(VisualItem item, MouseEvent e) {
+//                title.setText(null);
+//            }
+//        });
+//        
+//        Box box = new Box(BoxLayout.X_AXIS);
+//        box.add(Box.createHorizontalStrut(10));
+//        box.add(title);
+//        box.add(Box.createHorizontalGlue());
+//        box.add(search);
+//        box.add(Box.createHorizontalStrut(3));
         
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(gview, BorderLayout.CENTER);
-        panel.add(box, BorderLayout.SOUTH);
+//        panel.add(box, BorderLayout.SOUTH);
         
         Color BACKGROUND = Color.WHITE;
         Color FOREGROUND = Color.DARK_GRAY;
