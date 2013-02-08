@@ -8,7 +8,7 @@
  * Contributors:
  *     Eugen Neufeld - initial API and implementation
  *******************************************************************************/
-package org.jnect.core.impl;
+package org.jnect.core;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.jnect.core.impl.ConnectionDataHandler;
 import org.osgi.framework.Bundle;
 
 import net.sf.jni4net.Bridge;
@@ -54,7 +55,7 @@ public abstract class ConnectionProcessor implements Runnable {
 			String parentPath = fileUrl.getFile();
 			System.out.println("#### parent path = " + parentPath);
 			*/
-				String temp = "file:../org.jnect.core";
+				String temp = "file:../PrefuseKinect/org.jnect.core";
 			
 			    //url = new URL("file:../org.jnect.core/");
 				url = new URL(temp);

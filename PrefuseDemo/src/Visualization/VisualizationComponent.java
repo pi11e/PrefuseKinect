@@ -84,7 +84,7 @@ public class VisualizationComponent extends Display {
     private static final String linear = "linear";
     
 //    private LabelRenderer m_nodeRenderer;
-    private ShapeRenderer m_nodeRenderer;
+    private LabelRenderer m_nodeRenderer;
     private EdgeRenderer m_edgeRenderer;
     
     private String m_label = "label";
@@ -103,15 +103,15 @@ public class VisualizationComponent extends Display {
         // -- set up renderers --
         
         /* ORIGINAL CODE */
-//        m_nodeRenderer = new LabelRenderer(m_label);
-//        m_nodeRenderer.setRenderType(AbstractShapeRenderer.RENDER_TYPE_FILL);
-//        m_nodeRenderer.setHorizontalAlignment(Constants.CENTER);
-//        m_nodeRenderer.setRoundedCorner(8,8);
-//        m_edgeRenderer = new EdgeRenderer();
-//        
-//        DefaultRendererFactory rf = new DefaultRendererFactory(m_nodeRenderer);
-//        rf.add(new InGroupPredicate(treeEdges), m_edgeRenderer);
-//        m_vis.setRendererFactory(rf);
+        m_nodeRenderer = new LabelRenderer(m_label);
+        m_nodeRenderer.setRenderType(AbstractShapeRenderer.RENDER_TYPE_FILL);
+        m_nodeRenderer.setHorizontalAlignment(Constants.CENTER);
+        m_nodeRenderer.setRoundedCorner(8,8);
+        m_edgeRenderer = new EdgeRenderer();
+        
+        DefaultRendererFactory rf = new DefaultRendererFactory(m_nodeRenderer);
+        rf.add(new InGroupPredicate(treeEdges), m_edgeRenderer);
+        m_vis.setRendererFactory(rf);
         /* END OF ORIGINAL CODE */
         
         /*
@@ -121,6 +121,7 @@ public class VisualizationComponent extends Display {
          */
         
         // label here is "name", referring to the "name" property given in the xml data file
+        /*
         m_nodeRenderer = new ShapeRenderer();
         m_nodeRenderer.setRenderType(AbstractShapeRenderer.RENDER_TYPE_FILL);
        
@@ -131,7 +132,7 @@ public class VisualizationComponent extends Display {
         DefaultRendererFactory rf = new DefaultRendererFactory(m_nodeRenderer);
         rf.add(new InGroupPredicate(treeEdges), m_edgeRenderer);
         m_vis.setRendererFactory(rf);
-        
+        */
         
         // -- set up processing actions --
         
