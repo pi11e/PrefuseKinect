@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RightHandTracker
+Bundle-SymbolicName: org.jnect.rightHandTracker;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.jnect.righthandtracker.Activator
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0";visibility:=reexport,
+ org.eclipse.ui;bundle-version="3.103.0";visibility:=reexport,
+ org.eclipse.equinox.nonosgi.registry;bundle-version="1.0.0",
+ org.jnect.bodymodel;bundle-version="0.2.1",
+ org.jnect.core;bundle-version="0.2.1",
+ org.jnect.emfstore;bundle-version="0.2.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.emf.common.notify
+Main-Class:  org.jnect.righthandtracker.RightHandTrackerLauncher

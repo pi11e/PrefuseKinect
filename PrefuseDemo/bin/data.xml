@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  An excerpt of an egocentric social network  -->
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+<graph edgedefault="undirected">
+ 
+<!-- data schema -->
+<key id="name" for="node" attr.name="name" attr.type="string"/>
+<!--key id="gender" for="node" attr.name="gender" attr.type="string"/-->
+  
+<!-- nodes -->  
+
+<!-- level 0 -->
+<node id="0">
+ <data key="name">Start</data>
+</node>
+
+<!-- level 1 -->
+<node id="10">
+ <data key="name">Saxonica</data>
+</node>
+<node id="11">
+ <data key="name">Handschriften</data>
+</node>
+<node id="12">
+ <data key="name">Musik</data>
+</node>
+<node id="13">
+ <data key="name">Technikgeschichte</data>
+</node>
+
+<!-- level 2 -->
+<!-- saxonica subnodes -->
+<node id="200">
+ <data key="name">Eintrag 1</data>
+</node>
+<node id="201">
+ <data key="name">Eintrag 2</data>
+</node>
+<node id="202">
+ <data key="name">Eintrag 3</data>
+</node>
+<node id="203">
+ <data key="name">Eintrag 4</data>
+</node>
+<node id="204">
+ <data key="name">Eintrag 5</data>
+</node>
+<node id="205">
+ <data key="name">Eintrag 6</data>
+</node>
+<node id="206">
+ <data key="name">Eintrag 7</data>
+</node>
+<!-- handschriften subnodes -->
+<node id="207">
+ <data key="name">Eintrag 1</data>
+</node>
+<node id="208">
+ <data key="name">Eintrag 2</data>
+</node>
+<node id="209">
+ <data key="name">Eintrag 3</data>
+</node>
+<!-- musik subnodes -->
+<node id="210">
+ <data key="name">Eintrag 1</data>
+</node>
+<node id="211">
+ <data key="name">Eintrag 2</data>
+</node>
+<node id="212">
+ <data key="name">Eintrag 3</data>
+</node>
+<!-- technikgeschichte subnodes -->
+<node id="213">
+ <data key="name">Eintrag 1</data>
+</node>
+<node id="214">
+ <data key="name">Eintrag 2</data>
+</node>
+
+<!-- edges -->
+
+<!-- edges from start to 1st level -->
+<edge source="0" target="10"></edge>
+<edge source="0" target="11"></edge>
+<edge source="0" target="12"></edge>
+<edge source="0" target="13"></edge>
+<!-- edges from saxonica to children -->
+<edge source="10" target="200"></edge>
+<edge source="10" target="201"></edge>
+<edge source="10" target="202"></edge>
+<edge source="10" target="203"></edge>
+<edge source="10" target="204"></edge>
+<edge source="10" target="205"></edge>
+<edge source="10" target="206"></edge>
+<!-- edges from handschriften to children -->
+<edge source="11" target="207"></edge>
+<edge source="11" target="208"></edge>
+<edge source="11" target="209"></edge>
+<!-- edges from musik to children -->
+<edge source="12" target="210"></edge>
+<edge source="12" target="211"></edge>
+<edge source="12" target="212"></edge>
+<!-- edges from technikgeschichte to children -->
+<edge source="13" target="213"></edge>
+<edge source="13" target="214"></edge>
+</graph>
+</graphml>
