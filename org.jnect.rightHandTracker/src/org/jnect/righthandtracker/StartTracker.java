@@ -8,7 +8,7 @@ public class StartTracker {
 	
         public static void main(String[] args) {
         	
-        	RightHandTracker.INSTANCE.printRightHandPosition();
+        	RightHandTracker.INSTANCE.useRightHandPosition();
         	LeftHandTracker.INSTANCE.printLeftHandPosition();
         	
         	}

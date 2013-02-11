@@ -19,7 +19,7 @@ public class RightHandTracker {
         private RightHandTracker() {
         };
 
-        public void printRightHandPosition() {
+        public void useRightHandPosition() {
         	
         	KinectManager.INSTANCE.startKinect();
             

@@ -12,7 +12,7 @@ public class StartStopHandler extends AbstractHandler {
         @Override
         public Object execute(ExecutionEvent event) throws ExecutionException {
                 if (!STARTED) {
-                        RightHandTracker.INSTANCE.printRightHandPosition();
+                        RightHandTracker.INSTANCE.useRightHandPosition();
                         STARTED = true;
                 } else {
                         RightHandTracker.INSTANCE.stop();

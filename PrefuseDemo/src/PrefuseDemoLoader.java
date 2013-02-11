@@ -80,7 +80,7 @@ public class PrefuseDemoLoader
 			Robot robo = new Robot();
 			
 			RightHandTracker.INSTANCE.setRobot(robo);
-			RightHandTracker.INSTANCE.printRightHandPosition();
+			RightHandTracker.INSTANCE.useRightHandPosition();
 	    	//LeftHandTracker.INSTANCE.printLeftHandPosition();
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
